@@ -30,6 +30,7 @@ jobs:
       - run: npm install --prefer-offline --no-audit --no-progress
       - run: npm run make
       - run: DEB_FILE=$(ls out/make/deb/x64)
+      - run: mv $DEB_FILE out/shellops-panel.deb
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -47,6 +48,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: out/make/deb/x64/${{ env.DEB_FILE }}
-          asset_name: ${{ env.DEB_FILE}}
+          asset_path: out/shellops-panel.deb
+          asset_name: shellops-panel.deb
           asset_content_type: application/vnd.debian.binary-package
