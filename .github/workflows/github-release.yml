@@ -26,7 +26,7 @@ jobs:
       - run: mv panel.zip public
       - run: cd public && unzip panel.zip
       - run: mv public/out/* public
-      - run: rm public/panel.zip && rm -r out
+      - run: rm public/panel.zip && rm -r public/out
       - run: npm install --prefer-offline --no-audit --no-progress
       - run: npm run make
       - run: DEB_FILE=$(ls out/make/deb/x64)
