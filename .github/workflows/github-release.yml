@@ -22,8 +22,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: |
-          curl -s https://api.github.com/repos/shellops/shellops-panel/releases/latest | grep "panel.*zip" | cut -d : -f 2,3 | tr -d \" | wget -qi -
+      - run: wget https://github.com/shellops/shellops-panel/releases/latest/download/panel.zip
       - run: mv panel.zip public
       - run: cd public && unzip panel.zip
       - run: mv public/out/* public
