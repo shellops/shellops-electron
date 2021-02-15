@@ -29,8 +29,7 @@ jobs:
       - run: rm public/panel.zip && rm -r public/out
       - run: npm install --prefer-offline --no-audit --no-progress
       - run: npm run make
-      - run: DEB_FILE=$(ls out/make/deb/x64)
-      - run: mv $DEB_FILE out/shellops-panel.deb
+      - run: mv out/make/deb/x64/$(ls out/make/deb/x64) out/shellops-panel.deb
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
